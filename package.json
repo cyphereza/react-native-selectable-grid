@@ -1,0 +1,29 @@
+{
+  "name": "react-native-selectable-grid",
+  "version": "0.1.0",
+  "description": "Selectable (none, one or more) grid buttons for react-native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyphereza/react-native-selectable-grid.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "selectable",
+    "grid",
+    "buttons",
+    "layout",
+    "calendar",
+    "schedule"
+  ],
+  "author": "Reza Syahzan <cyphereza@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cyphereza/react-native-selectable-grid/issues"
+  },
+  "homepage": "https://github.com/cyphereza/react-native-selectable-grid#readme"
+}
