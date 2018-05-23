@@ -25,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/cyphereza/react-native-selectable-grid/issues"
   },
-  "homepage": "https://github.com/cyphereza/react-native-selectable-grid#readme"
+  "homepage": "https://github.com/cyphereza/react-native-selectable-grid#readme",
+  "peerDependencies": {
+    "react-native": ">= 0.47.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
