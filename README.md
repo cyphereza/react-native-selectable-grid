@@ -46,3 +46,21 @@ customRender={data => (
     <Text style={{ color: 'red', fontSize: 35 }}>{data.a}</Text>
   </View>)}
 ```
+
+### Retrieving Selected Data
+You can use `ref` to retrieve selected data via `selectedData()` function. Below is an example on how to use `ref`.
+
+```javascript
+import SelectableGrid from 'react-native-selectable-grid';
+...
+<SelectableGrid
+  data={fakeData}
+  ref={(ref) => {
+    this.sbRef = ref;
+  }}
+/>
+...
+<Button onPress={() => alert(this.sbRef.selectedData())}>
+  <Text children={'Retrieve data'}>
+</Button>
+```
