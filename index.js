@@ -74,7 +74,7 @@ class SelectableGrid extends Component {
   }
 
   render() {
-    const { data, maxPerRow, customRender, selectedStyle, unselectedStyle } = this.props;
+    const { data, maxPerRow, unselectedRender, selectedRender, selectedStyle, unselectedStyle } = this.props;
     const boxWidth = this.calculateBoxWidth(maxPerRow);
     let counter = 0;
 
@@ -86,7 +86,7 @@ class SelectableGrid extends Component {
 
           return (
             <TouchableOpacity style={[styles.contentBox, unselectedStyle, (this.state.selectedItem === keyValue || this.state.itemsArray.includes(keyValue)) && selectedStyle, { height: boxWidth, width: boxWidth }]} key={keyValue} onPress={() => this.handleSelectItem(keyValue)}>
-              {customRender(i)}
+              {(this.state.selectedItem === keyValue || this.state.itemsArray.includes(keyValue)) ? selectedRender(i) : unselectedRender(i)}
             </TouchableOpacity>
           );
         })}
@@ -110,7 +110,8 @@ SelectableGrid.propTypes = {
   data: PropTypes.array.isRequired,
   maxPerRow: PropTypes.number,
   maxSelect: PropTypes.number,
-  customRender: PropTypes.func,
+  unselectedRender: PropTypes.func,
+  selectedRender: PropTypes.func,
   unselectedStyle: PropTypes.any,
   selectedStyle: PropTypes.any,
 };
@@ -118,7 +119,8 @@ SelectableGrid.propTypes = {
 SelectableGrid.defaultProps = {
   maxPerRow: 2,
   maxSelect: 1,
-  customRender: renderBox,
+  unselectedRender: renderBox,
+  selectedRender: renderBox,
   unselectedStyle: {},
   selectedStyle: styles.contentBoxSelected,
 };

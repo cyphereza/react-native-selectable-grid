@@ -34,17 +34,25 @@ class App extends Component {
 |`data`|array|Receives array of data to be displayed|By default receives array of objects with 'a' key|
 |`maxPerRow`|number|Maximum boxes per row (all boxes in grid will have the same width and height)|2|
 |`maxSelect`|number|Number of selectable boxes (0 = non-selectable, 1 = only one is selectable, 2 = only two are selectable, so on and so forth)|1|
-|`customRender`|function|Custom item (box) component|_None_|
+|`unselectedRender`|function|Custom component for unselected item|_None_|
+|`selectedRender`|function|Custom component for selected item|_None_|
 |`unselectedStyle`|style|Style for unselected boxes|_None_|
 |`selectedStyle`|style|Style for selected boxes|_None_|
 
 ### Custom Render
 E.g:
 ```javascript
-customRender={data => (
+unselectedRender={data => (
   <View>
     <Text style={{ color: 'red', fontSize: 35 }}>{data.a}</Text>
-  </View>)}
+  </View>
+)}
+...
+selectedRender={data => (
+  <View>
+    <Text style={{ color: 'blue', fontSize: 35 }}>{data.a}</Text>
+  </View>
+)}
 ```
 
 ### Retrieving Selected Data
