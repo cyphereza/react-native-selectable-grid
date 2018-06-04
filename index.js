@@ -40,13 +40,14 @@ class SelectableGrid extends Component {
   };
 
   handleSelectItem = (keyValue) => {
-    const { maxSelect } = this.props;
+    const { maxSelect, onSelect } = this.props;
     const { selectedItem, itemsArray } = this.state;
 
     if (maxSelect === 1) {
       this.setState({
         selectedItem: selectedItem === keyValue ? -1 : keyValue,
       });
+      onSelect(selectedItem === keyValue ? -1 : keyValue);
     } else if (maxSelect > 1) {
       const newItemsArray = itemsArray;
 
@@ -62,6 +63,7 @@ class SelectableGrid extends Component {
       }
 
       this.setState({ itemsArray: newItemsArray });
+      onSelect(newItemsArray);
     }
   };
 
@@ -137,6 +139,7 @@ SelectableGrid.propTypes = {
   selectedRender: PropTypes.func,
   unselectedStyle: PropTypes.any,
   selectedStyle: PropTypes.any,
+  onSelect: PropTypes.func,
 };
 
 SelectableGrid.defaultProps = {
@@ -146,6 +149,7 @@ SelectableGrid.defaultProps = {
   selectedRender: renderBox,
   unselectedStyle: {},
   selectedStyle: styles.contentBoxSelected,
+  onSelect: () => null,
 };
 
 export default SelectableGrid;
