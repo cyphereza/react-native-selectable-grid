@@ -10,7 +10,6 @@ class SelectableGrid extends Component {
   state = {
     selectedItem: -1,
     itemsArray: [],
-    width: 0,
     height: 0,
   };
 
@@ -39,8 +38,6 @@ class SelectableGrid extends Component {
       return selectedDataArray;
     }
   };
-
-  calculateBoxWidth = maxPerRow => this.state.width / maxPerRow;
 
   handleSelectItem = (keyValue) => {
     const { maxSelect } = this.props;
