@@ -13,7 +13,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import SelectableGrid from 'react-native-selectable-grid'
 
-const fakeData = [{ a: '1' }, { a: '2' }, { a: '3' }, { a: '4' }, { a: '5' }];
+const fakeData = [{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }];
 
 class App extends Component {
   render() {
@@ -49,12 +49,12 @@ E.g:
   data={somedata}
   unselectedRender={data => (
     <View>
-      <Text style={{ color: 'red', fontSize: 35 }}>{data.a}</Text>
+      <Text style={{ color: 'red', fontSize: 35 }}>{data.label}</Text>
     </View>
   )}
   selectedRender={data => (
     <View>
-      <Text style={{ color: 'blue', fontSize: 35 }}>{data.a}</Text>
+      <Text style={{ color: 'blue', fontSize: 35 }}>{data.label}</Text>
     </View>
   )}
 />
