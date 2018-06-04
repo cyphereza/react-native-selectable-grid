@@ -31,13 +31,14 @@ class App extends Component {
 ### Properties
 |Prop|Type|Description|Default|Required|
 |----|----|-----------|-------|--------|
-|`data`|array|Receives array of data to be displayed|By default receives array of objects with 'a' key|Required|
+|`data`|array|Receives array of data to be displayed|By default receives array of objects with 'label' key|Required|
 |`maxPerRow`|number|Maximum boxes per row (all boxes in grid will have the same width and height)|2|Optional|
 |`maxSelect`|number|Number of selectable boxes (0 = non-selectable, 1 = only one is selectable, 2 = only two are selectable, so on and so forth)|1|Optional|
 |`unselectedRender`|function|Custom component for unselected item|_None_|Optional|
 |`selectedRender`|function|Custom component for selected item|_None_|Optional|
 |`unselectedStyle`|style|Style for unselected boxes|_None_|Optional|
 |`selectedStyle`|style|Style for selected boxes|_None_|Optional|
+|`onSelect`|function|Return selected items(s) by index everytime user make selections|null|Optional|
 
 ### Custom Render
 You can specify `unselectedRender` only and without `selectedRender`. By default, it will only change `backgroundColor` or any styles you specified in `selectedStyle`, when you select a box.
