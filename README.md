@@ -13,7 +13,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import SelectableGrid from 'react-native-selectable-grid'
 
-const fakeData = [{ a: '1' }, { a: '2' }, { a: '3' }, { a: '4' }, { a: '5' }];
+const fakeData = [{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }];
 
 class App extends Component {
   render() {
@@ -31,13 +31,15 @@ class App extends Component {
 ### Properties
 |Prop|Type|Description|Default|Required|
 |----|----|-----------|-------|--------|
-|`data`|array|Receives array of data to be displayed|By default receives array of objects with 'a' key|Required|
+|`data`|array|Receives array of data to be displayed|By default receives array of objects with 'label' key|Required|
+|`height`|number|Height of individual box|By default height will be same as width|Optional|
 |`maxPerRow`|number|Maximum boxes per row (all boxes in grid will have the same width and height)|2|Optional|
 |`maxSelect`|number|Number of selectable boxes (0 = non-selectable, 1 = only one is selectable, 2 = only two are selectable, so on and so forth)|1|Optional|
 |`unselectedRender`|function|Custom component for unselected item|_None_|Optional|
 |`selectedRender`|function|Custom component for selected item|_None_|Optional|
 |`unselectedStyle`|style|Style for unselected boxes|_None_|Optional|
 |`selectedStyle`|style|Style for selected boxes|_None_|Optional|
+|`onSelect`|function|Return selected item(s) by index everytime user make selections|null|Optional|
 
 ### Custom Render
 You can specify `unselectedRender` only and without `selectedRender`. By default, it will only change `backgroundColor` or any styles you specified in `selectedStyle`, when you select a box.
@@ -49,12 +51,12 @@ E.g:
   data={somedata}
   unselectedRender={data => (
     <View>
-      <Text style={{ color: 'red', fontSize: 35 }}>{data.a}</Text>
+      <Text style={{ color: 'red', fontSize: 35 }}>{data.label}</Text>
     </View>
   )}
   selectedRender={data => (
     <View>
-      <Text style={{ color: 'blue', fontSize: 35 }}>{data.a}</Text>
+      <Text style={{ color: 'blue', fontSize: 35 }}>{data.label}</Text>
     </View>
   )}
 />
