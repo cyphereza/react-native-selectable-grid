@@ -32,6 +32,7 @@ class App extends Component {
 |Prop|Type|Description|Default|Required|
 |----|----|-----------|-------|--------|
 |`data`|array|Receives array of data to be displayed|By default receives array of objects with 'label' key|Required|
+|`height`|number|Height of individual box|By default height will be same as width|Optional|
 |`maxPerRow`|number|Maximum boxes per row (all boxes in grid will have the same width and height)|2|Optional|
 |`maxSelect`|number|Number of selectable boxes (0 = non-selectable, 1 = only one is selectable, 2 = only two are selectable, so on and so forth)|1|Optional|
 |`unselectedRender`|function|Custom component for unselected item|_None_|Optional|
