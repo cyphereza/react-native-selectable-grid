@@ -63,7 +63,23 @@ E.g:
 ```
 
 ### Retrieving Selected Data
-You can use `ref` to retrieve selected data via `selectedData()` function. Below is an example on how to use `ref`.
+There are two ways of retrieving selected data.
+1. Using `onSelected`
+2. Using `ref`
+
+To use `onSelected` to retrieve selected data, see example below:
+
+```javascript
+import SelectableGrid from 'react-native-selectable-grid';
+...
+<SelectableGrid
+  data={fakeData}
+  onSelected={selectedData => alert(selectedData)}
+/>
+...
+```
+
+To use `ref` to retrieve selected data via `selectedData()` function, see example below:
 
 ```javascript
 import SelectableGrid from 'react-native-selectable-grid';
