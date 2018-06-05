@@ -39,7 +39,7 @@ class App extends Component {
 |`selectedRender`|function|Custom component for selected item|_None_|Optional|
 |`unselectedStyle`|style|Style for unselected boxes|_None_|Optional|
 |`selectedStyle`|style|Style for selected boxes|_None_|Optional|
-|`onSelect`|function|Return selected items(s) by index everytime user make selections|null|Optional|
+|`onSelect`|function|Return selected item(s) by index everytime user make selections|null|Optional|
 
 ### Custom Render
 You can specify `unselectedRender` only and without `selectedRender`. By default, it will only change `backgroundColor` or any styles you specified in `selectedStyle`, when you select a box.
