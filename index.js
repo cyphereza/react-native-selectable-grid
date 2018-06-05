@@ -112,14 +112,14 @@ class SelectableGrid extends Component {
         counter++;
       }
       content.push(
-        <View style={{ flexDirection: 'row', width: '100%', height: 100 }}>
-          {row}
-        </View>,
+        <View style={[{ flexDirection: 'row', width: '100%' }]}>{row}</View>,
       );
     }
 
     return (
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>{content}</View>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+        {content}
+      </View>
     );
   }
 }
