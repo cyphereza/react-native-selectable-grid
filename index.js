@@ -75,6 +75,7 @@ class SelectableGrid extends Component {
       selectedRender,
       selectedStyle,
       unselectedStyle,
+      height,
     } = this.props;
     const { selectedItem, itemsArray } = this.state;
 
@@ -91,7 +92,10 @@ class SelectableGrid extends Component {
                 unselectedStyle,
                 (selectedItem === keyValue || itemsArray.includes(keyValue)) &&
                   selectedStyle,
-                { height: 100, flex: 1 },
+                height == null ? { aspectRatio: 1 } : { height },
+                {
+                  flex: 1,
+                },
               ]}
               onPress={() => this.handleSelectItem(keyValue)}
             >
@@ -140,6 +144,7 @@ SelectableGrid.propTypes = {
   unselectedStyle: PropTypes.any,
   selectedStyle: PropTypes.any,
   onSelect: PropTypes.func,
+  height: PropTypes.number,
 };
 
 SelectableGrid.defaultProps = {
@@ -149,6 +154,7 @@ SelectableGrid.defaultProps = {
   selectedRender: renderBox,
   unselectedStyle: {},
   selectedStyle: styles.contentBoxSelected,
+  height: null,
   onSelect: () => null,
 };
 
