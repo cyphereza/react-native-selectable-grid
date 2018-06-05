@@ -87,6 +87,7 @@ class SelectableGrid extends Component {
         if (counter < data.length) {
           row.push(
             <TouchableOpacity
+              key={keyValue}
               style={[
                 styles.contentBox,
                 unselectedStyle,
@@ -106,13 +107,13 @@ class SelectableGrid extends Component {
           );
         } else {
           row.push(
-            <View style={{ flex: 1, backgroundColor: 'transparent' }} />,
+            <View key={keyValue} style={{ flex: 1, backgroundColor: 'transparent' }} />,
           );
         }
         counter++;
       }
       content.push(
-        <View style={[{ flexDirection: 'row', width: '100%' }]}>{row}</View>,
+        <View key={i} style={[{ flexDirection: 'row', width: '100%' }]}>{row}</View>,
       );
     }
 
