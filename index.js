@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const renderBox = (item = { label: 'something' }) => (
-  <Text style={[{ color: 'white', fontSize: 20 }]}>{item.label}</Text>
+const renderBox = (item = { label: "something" }) => (
+  <Text style={[{ color: "white", fontSize: 20 }]}>{item.label}</Text>
 );
 
 class SelectableGrid extends Component {
   state = {
     selectedItem: -1,
     itemsArray: [],
-    height: 0,
+    height: 0
   };
 
   getIndex = (value, arr) => {
@@ -27,6 +27,9 @@ class SelectableGrid extends Component {
     const { itemsArray, selectedItem } = this.state;
 
     if (maxSelect === 1) {
+      if (selectedItem === -1) {
+        return null;
+      }
       return data[selectedItem];
     } else if (maxSelect > 1) {
       const selectedDataArray = [];
@@ -34,20 +37,22 @@ class SelectableGrid extends Component {
       for (let i = 0; i < itemsArray.length; i += 1) {
         selectedDataArray.push(data[itemsArray[i]]);
       }
-
-      return selectedDataArray;
+      if (selectedDataArray.length > 0) {
+        return selectedDataArray;
+      }
+      return null;
     }
   };
 
-  handleSelectItem = (keyValue) => {
+  handleSelectItem = keyValue => {
     const { maxSelect, onSelect } = this.props;
     const { selectedItem, itemsArray } = this.state;
 
     if (maxSelect === 1) {
       this.setState({
-        selectedItem: selectedItem === keyValue ? -1 : keyValue,
+        selectedItem: selectedItem === keyValue ? null : keyValue
       });
-      onSelect(selectedItem === keyValue ? -1 : keyValue);
+      onSelect(selectedItem === keyValue ? null : keyValue);
     } else if (maxSelect > 1) {
       const newItemsArray = itemsArray;
 
@@ -63,7 +68,12 @@ class SelectableGrid extends Component {
       }
 
       this.setState({ itemsArray: newItemsArray });
-      onSelect(newItemsArray);
+
+      if (newItemsArray.length === 0) {
+        onSelect(null);
+      } else {
+        onSelect(newItemsArray);
+      }
     }
   };
 
@@ -75,7 +85,7 @@ class SelectableGrid extends Component {
       selectedRender,
       selectedStyle,
       unselectedStyle,
-      height,
+      height
     } = this.props;
     const { selectedItem, itemsArray } = this.state;
 
@@ -95,30 +105,35 @@ class SelectableGrid extends Component {
                   selectedStyle,
                 height == null ? { aspectRatio: 1 } : { height },
                 {
-                  flex: 1,
-                },
+                  flex: 1
+                }
               ]}
               onPress={() => this.handleSelectItem(keyValue)}
             >
               {selectedItem === keyValue || itemsArray.includes(keyValue)
                 ? selectedRender(data[keyValue])
                 : unselectedRender(data[keyValue])}
-            </TouchableOpacity>,
+            </TouchableOpacity>
           );
         } else {
           row.push(
-            <View key={keyValue} style={{ flex: 1, backgroundColor: 'transparent' }} />,
+            <View
+              key={keyValue}
+              style={{ flex: 1, backgroundColor: "transparent" }}
+            />
           );
         }
         counter++;
       }
       content.push(
-        <View key={i} style={[{ flexDirection: 'row', width: '100%' }]}>{row}</View>,
+        <View key={i} style={[{ flexDirection: "row", width: "100%" }]}>
+          {row}
+        </View>
       );
     }
 
     return (
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%" }}>
         {content}
       </View>
     );
@@ -127,13 +142,13 @@ class SelectableGrid extends Component {
 
 const styles = StyleSheet.create({
   contentBox: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#adadad',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#adadad"
   },
   contentBoxSelected: {
-    backgroundColor: '#ff6600',
-  },
+    backgroundColor: "#ff6600"
+  }
 });
 
 SelectableGrid.propTypes = {
@@ -145,7 +160,7 @@ SelectableGrid.propTypes = {
   unselectedStyle: PropTypes.any,
   selectedStyle: PropTypes.any,
   onSelect: PropTypes.func,
-  height: PropTypes.number,
+  height: PropTypes.number
 };
 
 SelectableGrid.defaultProps = {
@@ -156,7 +171,7 @@ SelectableGrid.defaultProps = {
   unselectedStyle: {},
   selectedStyle: styles.contentBoxSelected,
   height: null,
-  onSelect: () => null,
+  onSelect: () => null
 };
 
 export default SelectableGrid;

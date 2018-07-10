@@ -64,17 +64,17 @@ E.g:
 
 ### Retrieving Selected Data
 There are two ways of retrieving selected data.
-1. Using `onSelected`
+1. Using `onSelect`
 2. Using `ref`
 
-To use `onSelected` to retrieve selected data, see example below:
+To use `onSelect` to retrieve selected data, see example below:
 
 ```javascript
 import SelectableGrid from 'react-native-selectable-grid';
 ...
 <SelectableGrid
   data={fakeData}
-  onSelected={selectedData => alert(selectedData)}
+  onSelect={selectedData => alert(selectedData)}
 />
 ...
 ```
@@ -95,3 +95,5 @@ import SelectableGrid from 'react-native-selectable-grid';
   <Text children={'Retrieve data'}>
 </Button>
 ```
+
+If nothing is selected, both ways returns `null`.
